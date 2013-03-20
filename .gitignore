@@ -1,2 +1,3 @@
 train/
 .DS_Store
+*.m~
