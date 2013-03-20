@@ -9,9 +9,9 @@ for w = 1:W-2
                 feat = zeros(H,W); %initialize to 0 
                 feat(x:x+h-1,y:y+w-1)=1; %white bar 
                 feat(x+h:x+2*h-1,y:y+w-1)=-1; %black bar 
-                fvec=[fvec feat(:)']; %vectorize feature 
+                fvec=[fvec feat(:)]; %vectorize feature 
             end
         end
     end
 end
-%save fvec.mat fvec
+save fvecVert.mat fvec
