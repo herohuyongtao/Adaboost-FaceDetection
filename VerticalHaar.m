@@ -1,4 +1,4 @@
-fvec = []; %feature vec matrix. PreAllocate for speed when size is known
+vertFvec = []; %feature vec matrix. PreAllocate for speed when size is known
 W = 19; H=19; %dimensions of training images
 
 % Vertical (Type B) %whitebar, blackbar Vertical 
@@ -9,9 +9,9 @@ for w = 1:W-2
                 feat = zeros(H,W); %initialize to 0 
                 feat(x:x+h-1,y:y+w-1)=1; %white bar 
                 feat(x+h:x+2*h-1,y:y+w-1)=-1; %black bar 
-                fvec=[fvec feat(:)]; %vectorize feature 
+                vertFvec=[vertFvec feat(:)]; %vectorize feature 
             end
         end
     end
 end
-save fvecVert.mat fvec
+save fvecVert.mat vertFvec
