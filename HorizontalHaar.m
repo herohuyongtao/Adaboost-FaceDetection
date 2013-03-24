@@ -1,4 +1,4 @@
-horizFvec = []; %feature vec matrix. PreAllocate for speed when size is known
+haarAFvec = zeros(361,11016); %feature vec matrix. PreAllocate for speed when size is known
 W = 19; H=19; %dimensions of training images
 
 % Horizontal (Type A) %whitebar, blackbar horizontal 
@@ -9,10 +9,10 @@ for w = 1:floor(W/2)-1 %w=1:8 => 2w=2:16
                 feat = zeros(H,W); %initialize to 0 
                 feat(x:x+h-1,y:y+w-1)=1; %white bar 
                 feat(x:x+h-1,y+w:y+2*w-1)=-1; %black bar 
-                horizFvec=[horizFvec feat(:)]; %vectorize feature 
+                haarAFvec=[haarAFvec feat(:)]; %vectorize feature 
             end
         end
     end
 end
-save fvecHoriz.mat horizFvec
+save fvecA.mat haarAFvec
 clearvars H W h x y

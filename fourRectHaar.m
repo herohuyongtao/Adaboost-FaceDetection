@@ -18,5 +18,5 @@ for w = 1:floor(W/2)-1 % w=1:9 => 2*w=2:18
         end
     end
 end
-save fvecVert.mat haarDFvec
+save fvecD.mat haarDFvec
 clearvars H W h w x y;
