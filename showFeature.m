@@ -1,4 +1,4 @@
-function showFeature( fvec, index)
+function foo = showFeature( fvec, index)
 %showFeature Utility function to show a feature
 %   Pass in the big feature vector and an index
 %   This will resize the index'd fvec and show it
