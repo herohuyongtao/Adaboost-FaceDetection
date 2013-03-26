@@ -3,5 +3,18 @@ We have an nxm matrix-
     m = num features
     value at i,j = cumsum value of the jth haar feature on the ith image
 
+In our test run from proj.pdf-
+    h(:,i) is the ith haar feature cum sum on all images
+    y [1 1 1 1 0 0 0 0 0 0] = binary face / not face 
+    D = ones(10,1)./10 = prob of each classifier
 
-
+faceTest = faceA(1:4,:);
+nonFaceTest = nonFaceA(1:6,:);
+test = [faceTest ; nonFaceTest];
+y = zeros(10,1);
+y(1:4) = 1;
+D = ones(10,1);
+D = D./10;
+h = test(:,1);
+e = xor(h<0,y)
+e'*D = cumulative error
