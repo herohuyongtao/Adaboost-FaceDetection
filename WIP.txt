@@ -1,3 +1,8 @@
+size(haarAFvec) = 361 x 11016
+size(faceImgs) = 2429 x 361
+
+faceA = faceImgs * haarAFvec; 
+
 We have an nxm matrix-
     n = num images
     m = num features
