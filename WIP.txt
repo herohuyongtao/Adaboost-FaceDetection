@@ -1,0 +1,7 @@
+We have an nxm matrix-
+    n = num images
+    m = num features
+    value at i,j = cumsum value of the jth haar feature on the ith image
+
+
+
