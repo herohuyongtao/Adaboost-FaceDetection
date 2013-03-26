@@ -10,8 +10,8 @@ for w = 1:W-2
             for y = 2:W-w %skip first columns 
                 count = count + 1;
                 feat = zeros(H,W); %initialize to 0 
-                feat(x:x+h-1,y:y+w-1)=1; %white bar 
-                feat(x+h:x+2*h-1,y:y+w-1)=-1; %black bar 
+                feat(x:x+h-1,y:y+w-1)=-1; % black bar
+                feat(x+h:x+2*h-1,y:y+w-1)=1; % white bar
                 haarBFvec(:,count) =feat(:); %vectorize feature 
             end
         end
