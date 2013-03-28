@@ -1,5 +1,6 @@
 size(haarAFvec) = 361 x 11016
 size(faceImgs) = 2429 x 361
+size(nonFaceImgs) = 4548 x 361
 
 faceA = faceImgs * haarAFvec; 
 
