@@ -1,10 +1,12 @@
+function threshold = ProcErrorOnePass( haarInput, faceClasses )
 % Presumes haarValsA 6977 x 11016
 % images x features where h(i,j) is the fVal of image i and feat j
 % faceClasses = 6977x1 array where 1- face 0-non face
+[M N] = size(haarInput);
 threshold = struct;
 equalThresh = [];
-for i = 1:11016
-    [sFeat, ndx] = sort(haarValsA(:,i));
+for i = 1:N
+    [sFeat, ndx] = sort(haarInput(:,i));
     % y is the polarity of the sorted fVals
     y = faceClasses(ndx);
     D = [ones(6977,1)]./6977;

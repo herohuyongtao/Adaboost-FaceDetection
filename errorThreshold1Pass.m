@@ -3,7 +3,7 @@
 % I load faceA and nonFaceA from haarVals.mat (master calculation .mat)
 %
 % create our BigAssMatrix(tm) of all images / features
-test = [faceA;nonFaceA];
+% test = [faceA;nonFaceA];
 
 % Index faces as 1 and non as 0
 y = zeros(2429+4548,1);
