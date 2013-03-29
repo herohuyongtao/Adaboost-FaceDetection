@@ -14,6 +14,7 @@ In our test run from proj.pdf-
     y [1 1 1 1 0 0 0 0 0 0] = binary face / not face 
     D = ones(10,1)./10 = prob of each classifier
 
+Iterative-
 faceTest = faceA(1:4,:);
 nonFaceTest = nonFaceA(1:6,:);
 test = [faceTest ; nonFaceTest];
@@ -24,3 +25,9 @@ D = D./10;
 h = test(:,1);
 e = xor(h<0,y)
 e'*D = cumulative error
+
+(Calculate integral image - foo = cumsum(cumsum(double(img)),2);)
+
+
+Vectorized-
+ProcErrorOnePass.m
