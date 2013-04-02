@@ -1,0 +1,13 @@
+load fvecA; 
+load fvecB; 
+load fvecC; 
+load fvecD; 
+load images faceImgs nonFaceImgs;
+allHaar = [haarAFvec haarBFvec haarCFvec haarDFvec];
+clear haar*;
+allImgs = [faceImgs;nonFaceImgs];
+clear faceImgs nonFaceImgs;
+allHaarVals = allImgs * allHaar;
+clear allImgs;
+faceClasses = [ones(2429,1); zeros(4548,1)];
+D = ones(6977,1)./6977;
