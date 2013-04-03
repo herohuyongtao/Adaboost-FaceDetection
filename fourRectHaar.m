@@ -8,8 +8,8 @@ W = 19; H=19; %dimensions of training images
 count = 0;
 for w = 1:floor(W/2) % w=1:9 => 2*w=2:18   
     for h = 1:floor(H/2) %h=1:9 => 2h=2:18
-        for x = 2:H-2*h %skip first cols 
-            for y = 2:W-2*w %skip first columns 
+        for x = 1:H-2*h %skip first cols 
+            for y = 1:W-2*w %skip first columns 
                 count = count + 1;
                 feat = zeros(H,W); %initialize to 0 
                 feat(x:x+h-1,y:y+w-1)=1; %white bar 1 
