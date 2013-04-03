@@ -1,0 +1,26 @@
+TODO:
+    test effect of scale
+    validate norm error (expand his code and compare error values for
+    individual entries - they will be different, how much?)
+    run test code on test images
+    create a classifier -> err rate max, rej rate max, custom
+    ALL THE FUCKING COMMENTS
+
+Profile:
+    load time
+    1err pass iterative, vec, drA, maybe cumsum
+    adaboost algo
+    test code (maybe implement cumsums) {1,20,50,100,200 feats} (may be an
+    issue with our 'complete' feature set)
+    feature creation
+
+Analysis:
+    (For our method and Dr A's method)
+    4 classes of feature
+    7k images for training
+    24k for testing (mainly non face)
+    what images failed testing and why
+    which classifiers work best (total / non face / face / custom)
+    How many [A-D] are in the top {10,200,whatever} for {tot,face,nonface}error
+    Describe,explain,include? top X [A-D] classifiers for {tot,face,nonface}error
+    What values of the thresholds were used? (optionally polarity for us)
