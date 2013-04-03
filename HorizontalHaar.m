@@ -1,7 +1,6 @@
-haarAFvec = zeros(361,11016); %feature vec matrix. 
- %Preallocate for speed when size is known
-clearvars H W w h x y feat count haarAFvec;
-W = 19; H=19; %dimensions of training images
+haarAFvec = zeros(361,17100); %feature vec matrix. 
+%Preallocate for speed when size is known
+W = 20; H=20; %dimensions of training images
 
 % Horizontal (Type A) %whitebar, blackbar horizontal 
 count = 0;
@@ -13,10 +12,12 @@ for w = 1:floor(W/2) %w=1:9 => 2w=2:18
                 feat = zeros(H,W); %initialize to 0 
                 feat(x:x+h-1,y:y+w-1)=1; %white bar 
                 feat(x:x+h-1,y+w:y+2*w-1)=-1; %black bar 
+                 feat(:,end) = [];
+                 feat(end,:) = [];
                 haarAFvec(:,count) = feat(:); %vectorize feature 
             end
         end
     end
 end
 save fvecA.mat haarAFvec
-%clearvars H W w h x y feat count;
+clearvars H W w h x y feat count;

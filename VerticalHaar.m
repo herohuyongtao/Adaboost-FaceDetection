@@ -1,7 +1,7 @@
-%haarBFvec = zeros(361,11016); %feature vec matrix. 
+haarBFvec = zeros(361,17100); %feature vec matrix. 
 %Preallocate for speed when size is known
 %clearvars H W h w x y count feat haarBFvec;
-W = 19; H=19; %dimensions of training images
+W = 20; H = 20; %dimensions of training images
 
 % Vertical (Type B) %whitebar, blackbar Vertical 
 count = 0;
@@ -13,6 +13,8 @@ for w = 1:W-1 % w=1:18 | originaly W-2
                 feat = zeros(H,W); %initialize to 0 
                 feat(x:x+h-1,y:y+w-1)=-1; % black bar
                 feat(x+h:x+2*h-1,y:y+w-1)=1; % white bar
+                feat(:,end) = [];
+                feat(end,:) = [];
                 haarBFvec(:,count) =feat(:); %vectorize feature 
             end
         end
