@@ -4,7 +4,8 @@ function [threshold, weakLearner] = ProcErrorOnePass( haarInput, ...
 % images x features where h(i,j) is the fVal of image i and feat j
 % faceClasses = 6977x1 array where 1- face 0-non face
 [~,N] = size(haarInput);
-threshold = zeros(N,3);
+% Polarity, errMin, sFeat, faceErr, nonFaceErr
+threshold = zeros(N,5); 
 weakLearner = struct;
 equalThresh = [];
 for i = 1:N
@@ -28,25 +29,23 @@ for i = 1:N
         threshold(i,1) = 0;
         threshold(i,2) = e1Min;
         threshold(i,3) = sFeat(e1NDX);
-%         threshold(i).polarity = 0;
-%         threshold(i).error = e1Min;
-%         threshold(i).value = sFeat(e1NDX);
     elseif e2Min < e1Min
         threshold(i,1) = 1;
         threshold(i,2) = e2Min;
         threshold(i,3) = sFeat(e2NDX);
-%         threshold(i).polarity = 1;
-%         threshold(i).error = e2Min;
-%         threshold(i).value = sFeat(e2NDX);
     else
         threshold(i,1) = 1;
         threshold(i,2) = e2Min;
         threshold(i,3) = sFeat(e2NDX);
-%         threshold(i).polarity = 1;
-%         threshold(i).error = e2Min;
-%         threshold(i).value = sFeat(e2NDX);
         equalThresh = [equalThresh i];
     end
+    if threshold(i,1) == 0
+        threshold(i,4) = sum(xor(y==1,(sFeat > threshold(i,2))));
+        threshold(i,5) = sum(xor(y==0,(sFeat > threshold(i,2))));
+    else
+        threshold(i,4) = sum(xor(y==1,(sFeat < threshold(i,2))));
+        threshold(i,5) = sum(xor(y==0,(sFeat < threshold(i,2))));
+    end   
 end
 
 [weakLearner.error, weakLearner.indexOfFeat] = min(threshold(:,2));
