@@ -3,7 +3,8 @@
 % faceClasses = 6977x1 array where 1- face 0-non face
 % Script Ver
 [~,N] = size(allHaarVals);
-threshold = zeros(N,3);
+D = [ones(6977,1)]./6977;
+threshold = zeros(N,5);
 weakLearner = struct;
 equalThresh = [];
 for i = 1:N
@@ -38,15 +39,16 @@ for i = 1:N
         equalThresh = [equalThresh i];
     end
     if threshold(i,1) == 0
-        threshold(i,4) = sum(xor(y==1,(sFeat > threshold(i,2))));
-        threshold(i,5) = sum(xor(y==0,(sFeat > threshold(i,2))));
+        threshold(i,4) = sum(xor(y(y==1),(sFeat(y==1) > threshold(i,2))));
+        threshold(i,5) = sum(xor(y(y==0),(sFeat(y==0) > threshold(i,2))));
     else
-        threshold(i,4) = sum(xor(y==1,(sFeat < threshold(i,2))));
-        threshold(i,5) = sum(xor(y==0,(sFeat < threshold(i,2))));
+        threshold(i,4) = sum(xor(y(y==1),(sFeat(y==1) < threshold(i,2))));
+        threshold(i,5) = sum(xor(y(y==0),(sFeat(y==0) < threshold(i,2))));
     end   
 
 end
-
+threshold(:,4) = threshold(:,4)./2429;
+threshold(:,5) = threshold(:,5)./4548;
 [weakLearner.error, weakLearner.indexOfFeat] = min(threshold(:,2));
 % If polarity = 0 - everything less than thresh is a non-face
 % else everything less than thresh is a face
