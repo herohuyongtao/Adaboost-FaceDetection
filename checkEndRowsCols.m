@@ -1,7 +1,8 @@
 function [ missRow19 missCol19 ] = checkEndRowsCols( fvec )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%This class was used for testing the haar features to make sure they
+%covered edge rows and columns
 
+%initialized to missed
 missCol19 = 0;
 missRow19 = 0;
 
@@ -11,6 +12,9 @@ foo = fvec(:,ind);
 n2 = length(foo);
 n = sqrt(n2);
 foo = reshape(foo,n,n);
+
+%if there was a one or a negative one in the row or column, a haar feature
+%used that column or row
 if (max(foo(:,n)) == 1 || min(foo(:,n)) == -1)
     missCol19 = 1;
 end
