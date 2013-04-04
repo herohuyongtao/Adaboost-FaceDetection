@@ -1,9 +1,9 @@
-load fvecA;
-load fvecB; 
-load fvecC; 
-load fvecD; 
-load images faceImgs nonFaceImgs;
-load testImages faceImgsTest nonFaceImgsTest;
+load 'matFiles/fvecA';
+load 'matFiles/fvecB'; 
+load 'matFiles/fvecC'; 
+load 'matFiles/fvecD'; 
+load 'matFiles/images' faceImgs nonFaceImgs;
+load 'matFiles/testImages' faceImgsTest nonFaceImgsTest;
 %create feature vector of all haar values
 allHaar = [haarAFvec haarBFvec haarCFvec haarDFvec];
 clear haar*;

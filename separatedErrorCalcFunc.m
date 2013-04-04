@@ -1,4 +1,4 @@
-function [threshold, weakLearner] = separatedErrorCalcFunc( haarInput, ...
+function [threshold] = separatedErrorCalcFunc( haarInput, ...
                 faceClasses, D)
 % Presumes haarValsA 6977 x 11016
 % images x features where h(i,j) is the fVal of image i and feat j
@@ -6,8 +6,6 @@ function [threshold, weakLearner] = separatedErrorCalcFunc( haarInput, ...
 [~,N] = size(haarInput);
 % polarity, errMin, sFeat, faceErr, nonFaceErr
 threshold = zeros(N,4); 
-weakLearner = struct;
-equalThresh = [];
 for i = 1:N
     [sFeat, ndx] = sort(haarInput(:,i));
     % Y is the sorted face/notface vec
