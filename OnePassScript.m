@@ -1,4 +1,3 @@
-% Presumes haarValsA 6977 x 11016
 % images x features where h(i,j) is the fVal of image i and feat j
 % faceClasses = 6977x1 array where 1- face 0-non face
 % Script Ver

@@ -1,3 +1,5 @@
+% Utility function to translate older version of threshold into structs
+
 [numFvecs threshEntries] = size(threshold);
 Classifier = struct;
 for i = 1:numFvecs
